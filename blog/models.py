@@ -1,5 +1,5 @@
-from django.db import models  # noqa: F401
 import uuid
+from django.db import models
 
 class Author(models.Model):
 	"""
@@ -16,7 +16,7 @@ class Author(models.Model):
 	created_at = models.DateTimeField()
 	modified_at = models.DateTimeField()
 
-	def __str__(self):
+	def __str__(self) -> str:
 		return self.full_name
 
 
@@ -41,5 +41,5 @@ class Post(models.Model):
 	published_at = models.DateTimeField()
 	author = models.ForeignKey(Author, on_delete = models.CASCADE)
 
-	def __str__(self):
+	def __str__(self) -> str:
 		return self.title

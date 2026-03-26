@@ -1,8 +1,7 @@
 from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render
-from .models import Post
+from django.shortcuts import get_object_or_404, render
 from django.utils import timezone
-from django.shortcuts import get_object_or_404
+from .models import Post
 
 def index(request: HttpRequest) -> HttpResponse:
     # Load all published posts in reverse chronological order
@@ -12,7 +11,7 @@ def index(request: HttpRequest) -> HttpResponse:
 def welcome(request: HttpRequest) -> HttpResponse:
     return render(request, "blog/welcome.html")
 
-def post_detail(request: HttpRequest, post_id) -> HttpResponse:
+def post_detail(request: HttpRequest, post_id: str) -> HttpResponse:
     post = get_object_or_404(
         Post.objects.select_related('author'),
         id=post_id,

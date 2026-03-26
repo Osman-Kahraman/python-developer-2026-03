@@ -12,6 +12,6 @@
     <div class="body">
       {{ post.body|safe }}
     </div>
-    <a href="/posts/">&larr; Back to posts</a>
+    <a href="{% url 'index' %}">← Back to posts</a>
   </article>
 {% endblock content %}

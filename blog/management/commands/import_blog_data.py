@@ -1,5 +1,6 @@
-import os
+
 import json
+import os
 from django.core.management.base import BaseCommand
 from blog.models import Author, Post
 from django.utils.dateparse import parse_datetime
@@ -7,10 +8,10 @@ from django.utils.dateparse import parse_datetime
 class Command(BaseCommand):
     help = 'Import authors and posts from JSON files into the database.'
 
-    def handle(self, *args, **options):
+    def handle(self, *args: object, **options: object) -> None:
         # Gets the project root directory (where manage.py is located)
         from django.conf import settings
-        
+
         base_dir = settings.BASE_DIR if hasattr(settings, 'BASE_DIR') else os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
         authors_dir = os.path.join(base_dir, 'data', 'authors')
         posts_dir = os.path.join(base_dir, 'data', 'posts')
