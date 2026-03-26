@@ -1,0 +1,17 @@
+{% extends "blog/base.html" %}
+{% block title %}
+  {{ post.title }}
+{% endblock title %}
+{% block content %}
+  <article class="post-detail">
+    <h1>{{ post.title }}</h1>
+    <div class="meta">
+      <span class="author">by {{ post.author.full_name }}</span>
+      <span class="date">Published: {{ post.published_at|date:"F j, Y, g:i a" }}</span>
+    </div>
+    <div class="body">
+      {{ post.body|safe }}
+    </div>
+    <a href="/posts/">&larr; Back to posts</a>
+  </article>
+{% endblock content %}
