@@ -25,9 +25,13 @@ jobs:
         pip install uv
         sudo apt-get update
         sudo apt-get install -y nodejs npm
+    - name: Set up Python venv with uv
+      run: |
+        uv venv .venv
+        source .venv/bin/activate
     - name: Install Python and Node dependencies
       run: |
-        uv pip install -r requirements.txt || true
+        uv pip install -r requirements.txt
         uv pip install django
         uv pip install ruff djlint
         npm install
