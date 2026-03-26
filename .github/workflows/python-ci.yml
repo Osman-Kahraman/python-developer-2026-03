@@ -1,0 +1,40 @@
+name: Python Django CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.12"]
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install uv and Node.js
+      run: |
+        pip install uv
+        sudo apt-get update
+        sudo apt-get install -y nodejs npm
+    - name: Install Python and Node dependencies
+      run: |
+        uv pip install -r requirements.txt || true
+        uv pip install django
+        uv pip install ruff djlint
+        npm install
+    - name: Lint with Ruff and djLint
+      run: |
+        uv run ruff check .
+        uv run djlint . --lint
+    - name: Run Django tests
+      run: |
+        uv run python manage.py test
