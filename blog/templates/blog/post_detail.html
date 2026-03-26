@@ -10,7 +10,7 @@
       <span class="date">Published: {{ post.published_at|date:"F j, Y, g:i a" }}</span>
     </div>
     <div class="body">
-      {{ post.body|safe }}
+      {{ post_body_html|safe }}
     </div>
     <a href="{% url 'index' %}">← Back to posts</a>
   </article>

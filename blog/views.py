@@ -1,3 +1,4 @@
+import markdown
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.utils import timezone
@@ -25,4 +26,5 @@ def post_detail(request: HttpRequest, post_id: str) -> HttpResponse:
         id=post_id,
         published_at__lte=timezone.now(),
     )
-    return render(request, "blog/post_detail.html", {"post": post})
+    post_body_html = markdown.markdown(post.body)
+    return render(request, "blog/post_detail.html", {"post": post, "post_body_html": post_body_html})
