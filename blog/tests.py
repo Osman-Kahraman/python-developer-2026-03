@@ -25,7 +25,7 @@ class BlogViewTests(TestCase):
             author=self.author,
             created_at=timezone.now(),
             modified_at=timezone.now(),
-            published_at=timezone.now() - timedelta(days=offset_days) if published else None,
+            published_at=timezone.now() - timedelta(days=offset_days) if published else timezone.now() + timedelta(days=365),
         )
 
     def test_homepage_loads(self) -> None:
