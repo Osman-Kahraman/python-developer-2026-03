@@ -6,9 +6,11 @@
   <h1>Posts</h1>
   <ul class="post-list">
     {% for post in posts %}
-      <li>
-        <a href="{% url 'post_detail' post.id %}"><strong>{{ post.title }}</strong></a>
-        <span class="author">by {{ post.author.full_name }}</span>
+      <li class="post-item">
+        <a href="{% url 'post_detail' post.id %}" class="post-link">
+          <strong>{{ post.title }}</strong>
+          <span class="author">by {{ post.author.full_name }}</span>
+        </a>
       </li>
     {% empty %}
       <li>No posts available.</li>

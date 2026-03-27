@@ -37,8 +37,7 @@ body {
   background: #fafbfc;
   border-radius: 0.5rem;
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.04);
-  padding: 1.25rem 1.5rem;
-  display: flex;
+  display: block;
   flex-direction: column;
   transition: box-shadow 0.2s;
 }
@@ -62,6 +61,19 @@ body {
 .post-list .author {
   color: #757575;
   font-size: 0.95rem;
+}
+
+.post-item {
+  padding: 0;
+}
+
+.post-link {
+  display: block;
+  padding: 1.25rem 1.5rem;
+  width: 100%;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
 }
 
 .post-detail {
