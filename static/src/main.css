@@ -18,6 +18,12 @@ body {
   min-height: 100vh;
 }
 
+.container {
+  margin: 0 auto;
+  max-width: 36rem;
+  padding: 2rem;
+}
+
 .post-list {
   list-style: none;
   padding: 0;
